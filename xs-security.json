@@ -1,5 +1,5 @@
 {
-    "xsappname": "myapp2",
+    "xsappname": "myapp-multitenant",
     "tenant-mode": "dedicated",
     "scopes": [
         {

@@ -8,7 +8,7 @@ const users = require('./users.json');
 const app = express();
 
 const services = xsenv.getServices(
-                            { uaa: 'nodeuaa2' }
+                            { uaa: 'multitenant-uaa-1' }
                             );
 
 passport.use(new JWTStrategy(services.uaa));

@@ -1,17 +1,17 @@
 ---
 applications:
-  - name: myapp-secured-demo2
+  - name: myapp-multitenant-demo1
     routes:
-      - route: node-12345671-3.cfapps.eu10.hana.ondemand.com
+      - route: myapp-multitenant-demo1-12345-1.cfapps.eu10.hana.ondemand.com
     path: myapp
     memory: 128M
     buildpack: nodejs_buildpack
     services:
-      - nodeuaa2
+      - multitenant-uaa-1
 
-  - name: approuter2
+  - name: approuter-multitenant
     routes:
-      - route: approuter1-12345671-3.cfapps.eu10.hana.ondemand.com
+      - route: approuter-multitenant-12345-1.cfapps.eu10.hana.ondemand.com
     path: approuter
     memory: 128M
     env:
@@ -19,9 +19,9 @@ applications:
         [
           {
             "name":"myapp",
-            "url":"https://node-12345671-3.cfapps.eu10.hana.ondemand.com",
+            "url":"https://myapp-multitenant-demo1-12345-1.cfapps.eu10.hana.ondemand.com",
             "forwardAuthToken": true
           }
         ]
     services:
-      - nodeuaa2
+      - multitenant-uaa-1
