@@ -4,12 +4,13 @@ const bodyParser = require('body-parser');
 const xsenv = require('@sap/xsenv');
 const JWTStrategy = require('@sap/xssec').JWTStrategy;
 
+
 const users = require('./users.json');
 const app = express();
 
 const services = xsenv.getServices(
-                            { uaa: 'multitenant-uaa-1' }
-                            );
+    { uaa: 'multitenant-uaa-1' }
+);
 
 passport.use(new JWTStrategy(services.uaa));
 
@@ -17,6 +18,18 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.authenticate('JWT', { session: false }));
 
+
+app.put('/callback/v1.0/tenants/*', function (req, res) {
+    var consumerSubdomain = req.body.subscribedSubdomain;
+    var tenantAppURL = "https:\/\/" + consumerSubdomain + "-approuter-multitenant-12345-1." + "cfapps.eu10.hana.ondemand.com";
+    res.status(200).send(tenantAppURL);
+});
+
+app.delete('/callback/v1.0/tenants/*', function (req, res) {
+    var consumerSubdomain = req.body.subscribedSubdomain;
+    var tenantAppURL = "https:\/\/" + consumerSubdomain + "-approuter-multitenant-12345-1." + "cfapps.eu10.hana.ondemand.com";
+    res.status(200).send(tenantAppURL);
+});
 
 app.get('/users', function (req, res) {
     var isAuthorized = req.authInfo.checkScope('$XSAPPNAME.Display');

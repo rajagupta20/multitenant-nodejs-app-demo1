@@ -8,6 +8,7 @@ applications:
     buildpack: nodejs_buildpack
     services:
       - multitenant-uaa-1
+      - saas-registry-1
 
   - name: approuter-multitenant
     routes:
@@ -23,5 +24,6 @@ applications:
             "forwardAuthToken": true
           }
         ]
+      TENANT_HOST_PATTERN: "^(.*)-approuter-multitenant-12345-1.cfapps.eu10.hana.ondemand.com"     
     services:
       - multitenant-uaa-1
