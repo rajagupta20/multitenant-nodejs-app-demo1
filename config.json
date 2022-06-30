@@ -1,9 +1,9 @@
 {
     "xsappname":"myapp-multitenant",
     "appUrls": {
-      "onSubscription" : "https://myapp-multitenant-demo1-12345-1.cfapps.eu10.hana.ondemand.com/callback/v1.0/tenants/{tenantId}"
+      "onSubscription" : "https://myapp-multitenant-demo1-123456-1.cfapps.eu10.hana.ondemand.com/callback/v1.0/tenants/{tenantId}"
     },
-    "displayName" : "My Multitenant Nodejs App",
+    "displayName" : "My Multitenant Nodejs App 1",
     "description" : "Demo App",
-    "category" : "Custom SaaS Applications"
+    "category" : "Multitenancy in BTP - Session"
   }

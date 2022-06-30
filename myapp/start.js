@@ -18,18 +18,22 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.authenticate('JWT', { session: false }));
 
-
+//=========================================================================
+//           Implement the subscribe/unsubscribe endpoints
+//=========================================================================
 app.put('/callback/v1.0/tenants/*', function (req, res) {
     var consumerSubdomain = req.body.subscribedSubdomain;
-    var tenantAppURL = "https:\/\/" + consumerSubdomain + "-approuter-multitenant-12345-1." + "cfapps.eu10.hana.ondemand.com";
+    var tenantAppURL = "https:\/\/" + consumerSubdomain + "-approuter-multitenant-123456-1." + "cfapps.eu10.hana.ondemand.com";
     res.status(200).send(tenantAppURL);
 });
 
 app.delete('/callback/v1.0/tenants/*', function (req, res) {
     var consumerSubdomain = req.body.subscribedSubdomain;
-    var tenantAppURL = "https:\/\/" + consumerSubdomain + "-approuter-multitenant-12345-1." + "cfapps.eu10.hana.ondemand.com";
+    var tenantAppURL = "https:\/\/" + consumerSubdomain + "-approuter-multitenant-123456-1." + "cfapps.eu10.hana.ondemand.com";
     res.status(200).send(tenantAppURL);
 });
+//=========================================================================
+
 
 app.get('/users', function (req, res) {
     var isAuthorized = req.authInfo.checkScope('$XSAPPNAME.Display');
